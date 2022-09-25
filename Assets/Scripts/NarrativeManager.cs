@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class NarrativeManager : MonoBehaviour
+{
+    private string introText;
+    private string taskText;
+
+    public TextMeshProUGUI introTextHolder;
+    public TextMeshProUGUI taskTextHolder;
+
+    void Start()
+    {
+        introText = 
+            "<size=60>WELCOME!\n\n" +
+            "<size=40>You are a programmer investigating an <b>AI.</b>\n" +
+            "Your daily duties are given below:";
+        taskText =
+			"<size=50>\u2022<indent=2em> Daily chat with AI</indent>\n" +
+			"\u2022<indent=2em> Daily game with AI</indent>";
+
+        introTextHolder.text = introText;
+        taskTextHolder.text = taskText;
+    }
+
+    
+}
