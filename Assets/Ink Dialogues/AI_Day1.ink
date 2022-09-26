@@ -10,5 +10,6 @@ Would you like to talk with me?
             -> chosen("No")
 === chosen(decision) ===
 You chose {decision}!
+Complete your daily game playing task next.
 -> END
             

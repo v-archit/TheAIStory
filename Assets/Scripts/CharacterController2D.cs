@@ -1,6 +1,7 @@
 using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
@@ -15,6 +16,8 @@ public class CharacterController2D : MonoBehaviour
 	private float airAcceleration;
 	[SerializeField]
 	private float groundDeceleration;
+
+    public TextMeshProUGUI gameStatus;
 
     private Vector2 velocity;
 	private float moveInput;
@@ -64,6 +67,18 @@ public class CharacterController2D : MonoBehaviour
         {
             if (hit == boxCollider)
                 continue;
+
+            if (hit.tag == "AI")
+            {
+                gameStatus.text = "GAME OVER!";
+                Time.timeScale = 0;
+            }
+
+            if (hit.tag == "Door")
+            {
+				gameStatus.text = "WELL DONE!";
+				Time.timeScale = 0;
+			}
 
             ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
             if (colliderDistance.isOverlapped)

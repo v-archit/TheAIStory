@@ -61,12 +61,18 @@ public class DialogueManager : MonoBehaviour
 
         NextDialogue();
 	}
-	public void NextDialogue()
+	
+    Coroutine dialogueCoroutine;
+	
+    public void NextDialogue()
     {
 		if (currentStory.canContinue)
 		{
+            if(dialogueCoroutine!= null)
+                StopCoroutine(dialogueCoroutine);
             //set text for next dialogue
-			dialogueText.text = currentStory.Continue();
+            dialogueCoroutine = StartCoroutine(UpdateDialogueText(currentStory.Continue()));
+			//dialogueText.text = currentStory.Continue();
             //display chocies if any
             DisplayChoices();
 		}
@@ -75,10 +81,26 @@ public class DialogueManager : MonoBehaviour
 			EndDialogue();
 		}
 	}
-    public void EndDialogue()
+
+	IEnumerator UpdateDialogueText(string sentence)
+	{
+		dialogueText.text = "";
+
+		foreach (char character in sentence.ToCharArray())
+		{
+			dialogueText.text += character;
+			yield return new WaitForSeconds(0.02f);
+		}
+
+	}
+
+	public void EndDialogue()
     {
         isDialoguePlaying = false;
         dialogueText.text = "";
+
+        GameManager.GetInstance().StartObstacleGame();
+
         Debug.Log("Conversation ended");
     }
 
@@ -121,18 +143,5 @@ public class DialogueManager : MonoBehaviour
         NextDialogue();
     }
 
-    //Coroutine sentenceCoroutine;
-    //IEnumerator UpdateSentenceText(string sentence)
-    //{
-    //    sentenceText.text = "";
-
-    //    foreach (char character in sentence.ToCharArray())
-    //    {
-    //        sentenceText.text += character;
-    //        yield return null;
-    //    }
-
-        
-
-    //}
+    
 }

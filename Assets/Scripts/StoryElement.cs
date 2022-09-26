@@ -9,7 +9,7 @@ public class StoryElement : MonoBehaviour
 
     private void Start()
     {
-        TriggerStory();
+
     }
 
     public void TriggerStory()
