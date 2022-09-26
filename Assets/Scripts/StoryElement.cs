@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class StoryElement : MonoBehaviour
 {
-    public Dialogue dialogue;
+    [SerializeField]
+    private TextAsset inkText;
+
+    private void Start()
+    {
+        TriggerStory();
+    }
 
     public void TriggerStory()
     {
-        GameObject.FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        DialogueManager.GetInstance().StartDialogue(inkText);
     }
 }

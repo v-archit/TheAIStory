@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject dayPanel;
+    public int day { get; private set; }
+
+    private void Start()
     {
-        
+        day = 0;
+        StartDayTransition();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartDayTransition()
     {
-        
+        dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "DAY " + day;
+        dayPanel.SetActive(true);
+        Invoke("EndDayTransition", 3);
     }
+
+    public void EndDayTransition()
+    {
+        dayPanel.SetActive(false);
+    }
+
 }
