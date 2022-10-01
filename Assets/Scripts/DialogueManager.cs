@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField]
     private TextMeshProUGUI dialogueText;
+    [SerializeField]
+    private TextMeshProUGUI nameText;
     //[SerializeField]
     //private GameObject dialoguePanel;
     [Header("Choices UI")]
@@ -20,9 +22,11 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
 
-    public bool isDialoguePlaying { get; private set; }
 
-    private static DialogueManager instance;
+	[HideInInspector] public bool isDialoguePlaying { get; private set; }
+	[HideInInspector] public bool isChoicePresent { get; private set; }
+
+	private static DialogueManager instance;
 
     private void Awake()
     {
@@ -34,7 +38,8 @@ public class DialogueManager : MonoBehaviour
 	void Start()
 	{
         isDialoguePlaying = false;
-        
+        isChoicePresent = false;
+
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
         foreach (GameObject choice in choices)
@@ -46,7 +51,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if(!isDialoguePlaying) return;
 
     }
 
@@ -66,13 +70,28 @@ public class DialogueManager : MonoBehaviour
 	
     public void NextDialogue()
     {
+        if (isChoicePresent) return;
+
 		if (currentStory.canContinue)
 		{
             if(dialogueCoroutine!= null)
                 StopCoroutine(dialogueCoroutine);
             //set text for next dialogue
             dialogueCoroutine = StartCoroutine(UpdateDialogueText(currentStory.Continue()));
-			//dialogueText.text = currentStory.Continue();
+            switch (currentStory.currentTags.Count)
+            {
+                case 0:
+                    break;
+                case 1:
+					nameText.text = currentStory.currentTags[0];
+					dialogueText.fontStyle = FontStyles.Normal;
+					break;
+				case 2:
+					nameText.text = currentStory.currentTags[0];
+					if (currentStory.currentTags[1] == "internal")
+						dialogueText.fontStyle = FontStyles.Italic;
+					break;
+			}
             //display chocies if any
             DisplayChoices();
 		}
@@ -107,13 +126,15 @@ public class DialogueManager : MonoBehaviour
     private void DisplayChoices()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
-       // Debug.Log("current choices: " + currentChoices.Count + " : " + currentChoices[0].text);
 
-        //choices check with UI choices
-        if (currentChoices.Count > choices.Length)
+        if (currentChoices.Count != 0)
+			isChoicePresent = true;
+
+		//choices check with UI choices
+		if (currentChoices.Count > choices.Length)
             Debug.Log("Not enough UI choices");
 
-        int index = 0;
+		int index = 0;
         //enable and initialize UI choices
         foreach (Choice choice in currentChoices)
         {
@@ -127,7 +148,7 @@ public class DialogueManager : MonoBehaviour
             choices[i].gameObject.SetActive(false);
         }
 
-        StartCoroutine(SelectFirstChoice());
+        //StartCoroutine(SelectFirstChoice());
     }
 
     private IEnumerator SelectFirstChoice()
@@ -140,6 +161,9 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+
+        isChoicePresent = false;
+
         NextDialogue();
     }
 
