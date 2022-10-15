@@ -22,6 +22,8 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
 
+    [SerializeField]
+    private GameObject[] faceObject;
 
 	[HideInInspector] public bool isDialoguePlaying { get; private set; }
 	[HideInInspector] public bool isChoicePresent { get; private set; }
@@ -76,6 +78,9 @@ public class DialogueManager : MonoBehaviour
 		{
             if(dialogueCoroutine!= null)
                 StopCoroutine(dialogueCoroutine);
+
+            
+
             //set text for next dialogue
             dialogueCoroutine = StartCoroutine(UpdateDialogueText(currentStory.Continue()));
             switch (currentStory.currentTags.Count)
@@ -83,11 +88,11 @@ public class DialogueManager : MonoBehaviour
                 case 0:
                     break;
                 case 1:
-					nameText.text = currentStory.currentTags[0];
+                    SetFaceAndName();
 					dialogueText.fontStyle = FontStyles.Normal;
 					break;
 				case 2:
-					nameText.text = currentStory.currentTags[0];
+					SetFaceAndName();
 					if (currentStory.currentTags[1] == "internal")
 						dialogueText.fontStyle = FontStyles.Italic;
 					break;
@@ -150,6 +155,26 @@ public class DialogueManager : MonoBehaviour
 
         //StartCoroutine(SelectFirstChoice());
     }
+
+
+    private void SetFaceAndName()
+    {
+		switch (currentStory.currentTags[0])
+		{
+			case "Programmer":
+				foreach (GameObject face in faceObject)
+					face.SetActive(false);
+				faceObject[0].SetActive(true);
+				break;
+			case "AI":
+				foreach (GameObject face in faceObject)
+					face.SetActive(false);
+				faceObject[1].SetActive(true);
+				break;
+		}
+		nameText.text = currentStory.currentTags[0];
+	}
+
 
     private IEnumerator SelectFirstChoice()
     {
