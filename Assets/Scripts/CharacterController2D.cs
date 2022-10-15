@@ -27,6 +27,11 @@ public class CharacterController2D : MonoBehaviour
     private float deceleration;
     public BoxCollider2D boxCollider;
 
+    private void Start()
+    {
+        Jump();
+    }
+
     void Update()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
@@ -37,8 +42,7 @@ public class CharacterController2D : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 //kinematics 3rd : v2 - u2 = 2as;
-                velocity.y = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
-                
+                Jump();
             }
         }
 
@@ -91,4 +95,10 @@ public class CharacterController2D : MonoBehaviour
             }
         }
     }
+
+    void Jump()
+    {
+		velocity.y = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
+
+	}
 }
