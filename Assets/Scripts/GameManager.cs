@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject dayPanel;
     public GameObject dialoguePanel;
     public GameObject introGamePanel;
-    public StoryElement aiStoryElement;
+    public StoryElement[] aiStoryElements;
     public int day { get; private set; }
 
 	private static GameManager instance;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         dayPanel.SetActive(false);
         dialoguePanel.SetActive(true );
-        aiStoryElement.TriggerStory();
+        aiStoryElements[day - 1].TriggerStory();     //current day story
     }
 
     public void StartObstacleGame()
