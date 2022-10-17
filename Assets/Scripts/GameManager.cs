@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
 	public void StartDayTransition()
     {
+
         ++day;
         dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "DAY " + day;
         dayPanel.SetActive(true);

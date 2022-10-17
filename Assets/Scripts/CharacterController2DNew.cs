@@ -33,7 +33,6 @@ public class CharacterController2DNew : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
-	public TextMeshProUGUI gameStatus;
 
 	private void Awake()
 	{
@@ -66,14 +65,7 @@ public class CharacterController2DNew : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.tag == "Door")
-		{
-			gameStatus.text = "WELL DONE!";
-			Time.timeScale = 0;
-		}
-	}
+	
 
 	public void Move(float move, bool crouch, bool jump)
 	{
