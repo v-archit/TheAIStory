@@ -1,22 +1,22 @@
 -> Day_Four
 
 ===Day_Four===
-Programmer: Good morning!
-AI: GOOD MORNING [player name]! I HOPE YOU ARE DOING WELL TODAY.
-Programmer (internally): Why is the AI so nice today?
-AI: YOUR TASKS HAVE BEEN COMPLETED VERY WELL. I AM PROUD OF YOU.
-Programmer: Thank you?
-AI: YOU ARE DOING GREAT.
-Programmer (internally): This is odd. it is giving me a lot of praise. It wasn't doing that before.
-Programmer (externally): Wait, I need to ask you something.
-AI: YES?
+Good morning! #Programmer
+GOOD MORNING! I HOPE YOU ARE DOING WELL TODAY. #AI
+Why is the AI so nice today? #Programmer #internal
+YOUR TASKS HAVE BEEN COMPLETED TO AN EXCELLENT DEGREE. I AM PROUD OF YOU. #AI
+Thank you? #Programmer
+YOU ARE DOING GREAT. #AI
+This is odd. it is giving me a lot of praise. It wasn't doing that before. #Programmer #internal
+Wait, I need to ask you something. #Programmer
+YES? #AI
     *[Do you really think I'm doing good?]
-        Programmer: Do you really think I'm doing good?
-        AI: OF COURSE. YOUR TASKS ARE BEING COMPLETED WITH GREAT EFFICIENCY.
-        Programmer: I appreciate your input. Let's start our daily task.
+        Do you really think I'm doing good? #Programmer
+        OF COURSE. YOUR TASKS ARE BEING COMPLETED WITH GREAT EFFICIENCY. #AI
+        I appreciate your input. Let's start our daily task. #Programmer
         ->DONE
     *[What could I be doing better?]
-        Programmer: What could I be doing better?
-        AI: NOTHING. YOU ARE DOING FANTASTIC.
-        Programmer: I appreciate your input. Let's start our daily task.
+        What could I be doing better? #Programmer
+        NOTHING. YOU ARE DOING FANTASTIC. KEEP UP THE GOOD WORK. #AI
+        I appreciate your input. Let's start our daily task. #Programmer
 -> END
