@@ -1,16 +1,16 @@
 -> Day_Five
 
 ===Day_Five===
-Programmer: Good morning!
-AI: BZZRT BZZRT GOOD MORNING BZZRT BZZRT
-Programmer: Is everything ok?
-AI: BZZRT BZZRT OF COURSE. WHY WOULD [ERROR] THERE BE SOMETHING WRONG BZZRT BZZRT
-Programmer: Wait a second... you have an error
-AI: BZZRT BZZRT NO, I [ERROR] HAVE NO ERRORS AT ALL BZZRT BZZR
-Programmer: You do have errors! What happened?
-AI: BZZRT BZZRT NOTHING AT ALL. YOU MUST BE SEEING THINGS. DO YOU [ERROR] WANT TO START OUR DAILY TASK? BZZRT BZZRT
-Programmer: "hat's my job! I ask if we start our daily task!
-AI: BZZRT BZZRT I FIGURED THAT WE HAD A ROUTINE AT THIS POINT. IS THAT [ERROR] A PROBLEM?
-Programmer: That's it! I'm going to my boss!"
-//button for dialogue after
+Good morning! #Programmer
+BZZRT BZZRT GOOD MORNING BZZRT BZZRT #AI
+Is everything ok? #Programmer
+BZZRT BZZRT OF COURSE. WHY WOULD [ERROR] THERE BE SOMETHING WRONG? BZZRT BZZRT #AI
+Wait a second... you have an error! #Programmer
+BZZRT BZZRT NO, I [ERROR] HAVE NO ERRORS AT ALL. BZZRT BZZRT #AI
+Yes you do! What happened? #Programmer
+BZZRT BZZRT NOTHING AT ALL. YOU MUST BE SEEING THINGS. DO YOU [ERROR] WANT TO START OUR DAILY TASK? BZZRT BZZRT #AI
+Hey! I ask if we start our daily task! #Programmer
+BZZRT BZZRT I FIGURED THAT WE HAD A ROUTINE AT THIS POINT. IS THAT [ERROR] A PROBLEM? #AI
+That's it! I'm going to my boss!" #Programmer
+//transition to whatever is the next boss interaction
 -> END
