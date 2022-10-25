@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Door
   - AI
+  - StopTrigger
+  - StopAnimObj
+  - DoorTrigger
+  - DoorTrigger2
+  - StopObstacles
   layers:
   - Default
   - TransparentFX

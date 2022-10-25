@@ -8,10 +8,13 @@ public class GameManager : MonoBehaviour
     public GameObject dayPanel;
     public GameObject dialoguePanel;
     public GameObject introGamePanel;
+    public GameObject taskObject;
     public StoryElement[] aiStoryElements;
     public int day { get; private set; }
 
 	private static GameManager instance;
+
+    private bool taskBool = false;
 
 	private void Awake()
 	{
@@ -25,7 +28,24 @@ public class GameManager : MonoBehaviour
         day = 0;
     }
 
-	public static GameManager GetInstance()
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            if (taskBool == false)
+            {
+				taskObject.SetActive(true);
+                taskBool = true;
+            }
+            else
+            {
+				taskObject.SetActive(false);
+                taskBool = false;
+			}
+		}
+    }
+
+    public static GameManager GetInstance()
 	{
 		return instance;
 	}

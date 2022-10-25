@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Ink.Runtime;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -162,17 +163,26 @@ public class DialogueManager : MonoBehaviour
 		switch (currentStory.currentTags[0])
 		{
 			case "Programmer":
-				foreach (GameObject face in faceObject)
-					face.SetActive(false);
-				faceObject[0].SetActive(true);
+                SetFaceInactive();
+				Color temp1 = faceObject[0].GetComponent<Image>().color;
+				faceObject[0].GetComponent<Image>().color = new Color(temp1.r, temp1.g, temp1.b, 1.0f);
 				break;
 			case "AI":
-				foreach (GameObject face in faceObject)
-					face.SetActive(false);
-				faceObject[1].SetActive(true);
+				SetFaceInactive();
+				Color temp2 = faceObject[1].GetComponent<Image>().color;
+				faceObject[1].GetComponent<Image>().color = new Color(temp2.r, temp2.g, temp2.b, 1.0f);
 				break;
 		}
 		nameText.text = currentStory.currentTags[0];
+	}
+
+    private void SetFaceInactive()
+    {
+		foreach (GameObject face in faceObject)
+		{
+			Color temp = face.GetComponent<Image>().color;
+			face.GetComponent<Image>().color = new Color(temp.r, temp.g, temp.b, 0.2f);
+		}
 	}
 
 
