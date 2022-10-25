@@ -1,7 +1,9 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -10,11 +12,14 @@ public class GameManager : MonoBehaviour
     public GameObject introGamePanel;
     public GameObject taskObject;
     public StoryElement[] aiStoryElements;
+    public StoryElement[] bossStoryElements;
     public int day { get; private set; }
+    public int bossChancesUsed { get; private set; }
 
 	private static GameManager instance;
 
     private bool taskBool = false;
+    public int maxBossChances { get; private set; }
 
 	private void Awake()
 	{
@@ -26,7 +31,10 @@ public class GameManager : MonoBehaviour
 	private void Start()
     {
         day = 0;
-    }
+		bossChancesUsed = 0;
+        maxBossChances = 3;
+
+	}
 
     private void Update()
     {
@@ -70,5 +78,10 @@ public class GameManager : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
 		introGamePanel.SetActive(true);
+    }
+
+    public void UseBossChance()
+    {
+        ++bossChancesUsed;
     }
 }

@@ -25,5 +25,14 @@ public class NarrativeManager : MonoBehaviour
         taskTextHolder.text = taskText;
     }
 
+    public void StartBossInteraction()
+    {
+        if (GameManager.GetInstance().bossChancesUsed < GameManager.GetInstance().maxBossChances)
+        {
+            GameManager.GetInstance().bossStoryElements[GameManager.GetInstance().bossChancesUsed].TriggerStory();
+            GameManager.GetInstance().UseBossChance();
+		}
+    }
+
     
 }

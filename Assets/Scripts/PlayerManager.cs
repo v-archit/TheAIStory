@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
 	{
 		aiPos = aiObject.transform.position;
 		playerPos = transform.position;
-		Debug.Log(playerPos);
+		obstacleObjects[0].SetActive(true);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour
 		{
 			GameObject.FindGameObjectWithTag("StopAnimObj").GetComponent<Animator>().enabled = true;
 			collision.enabled = false;
-			Invoke("EndObstacleGame", 15);
+			Invoke("EndObstacleGame", 12);
 		}
 	}
 
