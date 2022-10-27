@@ -7,9 +7,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    delegate void PostConversation();
+    PostConversation postConversation;
+
     public GameObject dayPanel;
     public GameObject dialoguePanel;
     public GameObject introGamePanel;
+    public GameObject obstaclePanel;
+    public GameObject surveyPanel;
     public GameObject taskObject;
     public StoryElement[] aiStoryElements;
     public StoryElement[] bossStoryElements;
@@ -17,6 +22,7 @@ public class GameManager : MonoBehaviour
     public int bossChancesUsed { get; private set; }
 
 	private static GameManager instance;
+    public DialogueManager dialogueManager;
 
     private bool taskBool = false;
     public int maxBossChances { get; private set; }
@@ -30,7 +36,7 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
     {
-        day = 0;
+        day = 3;
 		bossChancesUsed = 0;
         maxBossChances = 3;
 
@@ -53,35 +59,75 @@ public class GameManager : MonoBehaviour
 		}
     }
 
+    public void StartConversationDay()
+    {
+        dialoguePanel.SetActive(true);
+    }
+
     public static GameManager GetInstance()
 	{
 		return instance;
 	}
 
+    public void SetConversation(int face)
+    {
+        switch (face)
+        {
+            case 1:
+                postConversation = StartObstacleGame;
+                 break;
+            case 2:
+                postConversation = StartDayTransition;
+                break;
+        }
+    }
+
+    public void StartPostConversation()
+    {
+        postConversation();
+    }
+
 	public void StartDayTransition()
     {
-
-        ++day;
+        DisablePanels();
+		++day;
         dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "DAY " + day;
         dayPanel.SetActive(true);
         Invoke("EndDayTransition", 3);
     }
 
+
     public void EndDayTransition()
     {
-        dayPanel.SetActive(false);
-        dialoguePanel.SetActive(true );
+        DisablePanels();
+		dialoguePanel.SetActive(true);
+        dialogueManager.SetFaceActive(0, 1);
+        //Letting Manager know AI conversation is happening
+        SetConversation(1);
         aiStoryElements[day - 1].TriggerStory();     //current day story
     }
+    public void DisablePanels()
+    {
+		surveyPanel.SetActive(false);
+		dialoguePanel.SetActive(false);
+        introGamePanel.SetActive(false);
+		obstaclePanel.SetActive(false);
+        dayPanel.SetActive(false);
+	}
 
     public void StartObstacleGame()
     {
-        dialoguePanel.SetActive(false);
+		DisablePanels();
 		introGamePanel.SetActive(true);
     }
 
     public void UseBossChance()
     {
         ++bossChancesUsed;
+    }
+
+	public void StartSurvey()
+    {
+        surveyPanel.SetActive(true);
     }
 }

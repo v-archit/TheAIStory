@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
 	public TextMeshProUGUI gameStatus;
-	public GameObject obstaclePanel;
 	public GameObject[] obstacleObjects;
 	public GameObject aiObject;
 	public GameObject doorObject;
@@ -31,9 +30,11 @@ public class PlayerManager : MonoBehaviour
 			}
 			else
 			{
-				obstaclePanel.SetActive(false);
+				GameManager.GetInstance().DisablePanels();
+				//obstaclePanel.SetActive(false);
 				ResetObstacleGame();
-				GameManager.GetInstance().StartDayTransition();
+				//GameManager.GetInstance().StartDayTransition();
+				GameManager.GetInstance().StartSurvey();
 			}
 		}
 		if (collision.tag == "DoorTrigger")

@@ -26,6 +26,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private GameObject[] faceObject;
 
+    [SerializeField]
+    private GameObject continueButton;
+
 	[HideInInspector] public bool isDialoguePlaying { get; private set; }
 	[HideInInspector] public bool isChoicePresent { get; private set; }
 
@@ -73,7 +76,9 @@ public class DialogueManager : MonoBehaviour
 	
     public void NextDialogue()
     {
-        if (isChoicePresent) return;
+		continueButton.SetActive(true);
+
+		if (isChoicePresent) return;
 
 		if (currentStory.canContinue)
 		{
@@ -124,7 +129,7 @@ public class DialogueManager : MonoBehaviour
         isDialoguePlaying = false;
         dialogueText.text = "";
 
-        GameManager.GetInstance().StartObstacleGame();
+        GameManager.GetInstance().StartPostConversation();
 
         Debug.Log("Conversation ended");
     }
@@ -134,7 +139,10 @@ public class DialogueManager : MonoBehaviour
         List<Choice> currentChoices = currentStory.currentChoices;
 
         if (currentChoices.Count != 0)
-			isChoicePresent = true;
+        {
+            isChoicePresent = true;
+            continueButton.SetActive(false);
+        }
 
 		//choices check with UI choices
 		if (currentChoices.Count > choices.Length)
@@ -172,6 +180,11 @@ public class DialogueManager : MonoBehaviour
 				Color temp2 = faceObject[1].GetComponent<Image>().color;
 				faceObject[1].GetComponent<Image>().color = new Color(temp2.r, temp2.g, temp2.b, 1.0f);
 				break;
+			case "Boss":
+				SetFaceInactive();
+				Color temp3 = faceObject[2].GetComponent<Image>().color;
+				faceObject[2].GetComponent<Image>().color = new Color(temp3.r, temp3.g, temp3.b, 1.0f);
+				break;
 		}
 		nameText.text = currentStory.currentTags[0];
 	}
@@ -185,6 +198,13 @@ public class DialogueManager : MonoBehaviour
 		}
 	}
 
+    private void SetFaceDisable()
+    {
+		foreach (GameObject face in faceObject)
+		{
+			face.SetActive(false);
+		}
+	}
 
     private IEnumerator SelectFirstChoice()
     {
@@ -200,6 +220,14 @@ public class DialogueManager : MonoBehaviour
         isChoicePresent = false;
 
         NextDialogue();
+    }
+
+    public void SetFaceActive(int face1, int face2)
+    {
+        SetFaceDisable();
+
+        faceObject[face1].SetActive(true);
+        faceObject[face2].SetActive(true);
     }
 
     

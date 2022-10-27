@@ -11,6 +11,8 @@ public class NarrativeManager : MonoBehaviour
     public TextMeshProUGUI introTextHolder;
     public TextMeshProUGUI taskTextHolder;
 
+    public DialogueManager dialogueManager;
+
     void Start()
     {
         introText = 
@@ -27,12 +29,24 @@ public class NarrativeManager : MonoBehaviour
 
     public void StartBossInteraction()
     {
+
         if (GameManager.GetInstance().bossChancesUsed < GameManager.GetInstance().maxBossChances)
         {
+            GameManager.GetInstance().DisablePanels();
+            GameManager.GetInstance().StartConversationDay();
+            GameManager.GetInstance().SetConversation(2);
+
+            dialogueManager.SetFaceActive(0, 2);
+
             GameManager.GetInstance().bossStoryElements[GameManager.GetInstance().bossChancesUsed].TriggerStory();
             GameManager.GetInstance().UseBossChance();
+        }
+        else
+        {
+			GameManager.GetInstance().SetConversation(1);
+
 		}
-    }
+	}
 
     
 }
