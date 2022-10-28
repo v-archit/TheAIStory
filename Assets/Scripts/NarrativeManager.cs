@@ -2,29 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NarrativeManager : MonoBehaviour
 {
-    private string introText;
-    private string taskText;
-
     public TextMeshProUGUI introTextHolder;
     public TextMeshProUGUI taskTextHolder;
 
+    public Toggle yToggle;
+    public Toggle nToggle;
+
     public DialogueManager dialogueManager;
 
-    void Start()
+    private void Update()
     {
-   //     introText = 
-   //         "<size=60>WELCOME!\n\n" +
-   //         "<size=40>You are a programmer investigating an <b>AI.</b>\n" +
-   //         "Your daily duties are given below:";
-   //     taskText =
-			//"<size=50>\u2022<indent=2em> Daily chat with AI</indent>\n" +
-			//"\u2022<indent=2em> Daily game with AI</indent>";
 
-   //     introTextHolder.text = introText;
-   //     taskTextHolder.text = taskText;
     }
 
     public void StartBossInteraction()
@@ -48,5 +40,18 @@ public class NarrativeManager : MonoBehaviour
 		}
 	}
 
-    
+    public void SubmitSurvey()
+    {
+        if (yToggle.isOn)
+			StartBossInteraction();
+		else if (nToggle.isOn)
+        {
+            GameManager.GetInstance().StartDayTransition();
+        }
+		else
+		{
+            return;
+		}
+	}
+
 }

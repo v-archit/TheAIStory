@@ -44,18 +44,18 @@ public class CharacterController2DNew : MonoBehaviour
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
 
-		Debug.Log("Awake");
+		//Debug.Log("Awake");
 
 	}
 
 	private void FixedUpdate()
 	{
-		Debug.Log("Controller Fixed Update: " + Time.time);
+		//Debug.Log("Controller Fixed Update: " + Time.time);
 
 		bool wasGrounded = m_Grounded;
-		Debug.Log("was grounded " + wasGrounded + " " + transform.position.y);
+		//Debug.Log("was grounded " + wasGrounded + " " + transform.position.y);
 		m_Grounded = false;
-		Debug.Log("m_ground " + m_Grounded + " " + transform.position.y);
+		//Debug.Log("m_ground " + m_Grounded + " " + transform.position.y);
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -65,12 +65,12 @@ public class CharacterController2DNew : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				Debug.Log("m_ground " + m_Grounded + " " + transform.position.y);
+				//Debug.Log("m_ground " + m_Grounded + " " + transform.position.y);
 
 				if (!wasGrounded)
 				{
 					OnLandEvent.Invoke();
-					Debug.Log("Land event invoked" + " " + transform.position.y);
+					//Debug.Log("Land event invoked" + " " + transform.position.y);
 
 				}
 			}
@@ -151,7 +151,7 @@ public class CharacterController2DNew : MonoBehaviour
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 
 			m_Grounded = false;
-			Debug.Log("m_ground " + m_Grounded + " " + transform.position.y);
+			//Debug.Log("m_ground " + m_Grounded + " " + transform.position.y);
 		}
 	}
 

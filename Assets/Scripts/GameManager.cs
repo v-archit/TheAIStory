@@ -116,7 +116,9 @@ public class GameManager : MonoBehaviour
     {
         DisablePanels();
 		dialoguePanel.SetActive(true);
+        //Player AI conversation set
         dialogueManager.SetFaceActive(0, 1);
+  
         //Letting Manager know AI conversation is happening
         SetConversation(1);
         aiStoryElements[day - 1].TriggerStory();     //current day story

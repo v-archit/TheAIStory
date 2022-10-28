@@ -29,6 +29,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private GameObject continueButton;
 
+	[SerializeField]
+	private GameObject[] bgScreens;
+
 	[HideInInspector] public bool isDialoguePlaying { get; private set; }
 	[HideInInspector] public bool isChoicePresent { get; private set; }
 
@@ -131,7 +134,7 @@ public class DialogueManager : MonoBehaviour
 
         GameManager.GetInstance().StartPostConversation();
 
-        Debug.Log("Conversation ended");
+        //Debug.Log("Conversation ended");
     }
 
     private void DisplayChoices()
@@ -198,11 +201,15 @@ public class DialogueManager : MonoBehaviour
 		}
 	}
 
-    private void SetFaceDisable()
+    private void SetFaceAndBGDisable()
     {
 		foreach (GameObject face in faceObject)
 		{
 			face.SetActive(false);
+		}
+		foreach (GameObject bg in bgScreens)
+		{
+			bg.SetActive(false);
 		}
 	}
 
@@ -224,10 +231,12 @@ public class DialogueManager : MonoBehaviour
 
     public void SetFaceActive(int face1, int face2)
     {
-        SetFaceDisable();
+		SetFaceAndBGDisable();
 
         faceObject[face1].SetActive(true);
         faceObject[face2].SetActive(true);
+
+        bgScreens[face2-1].SetActive(true);
     }
 
     

@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Player Update: " + Time.time);
+        //Debug.Log("Player Update: " + Time.time);
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -22,13 +22,13 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsJumping", true);
             jump = true;
-            Debug.Log("Button pressed " + transform.position.y);
+            //Debug.Log("Button pressed " + transform.position.y);
         }
     }
 
     private void FixedUpdate()
     {
-		Debug.Log("Player Fixed Update: " + Time.time);
+		//Debug.Log("Player Fixed Update: " + Time.time);
 
 
 		controller.Move(horizontalMove, false, jump);
@@ -40,6 +40,6 @@ public class PlayerMovement : MonoBehaviour
 	public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
-        Debug.Log("Landed " + transform.position.y);
+        //Debug.Log("Landed " + transform.position.y);
     }
 }
