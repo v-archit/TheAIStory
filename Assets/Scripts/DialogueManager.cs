@@ -194,7 +194,7 @@ public class DialogueManager : MonoBehaviour
 		foreach (GameObject face in faceObject)
 		{
 			Color temp = face.GetComponent<Image>().color;
-			face.GetComponent<Image>().color = new Color(temp.r, temp.g, temp.b, 0.2f);
+			face.GetComponent<Image>().color = new Color(temp.r, temp.g, temp.b, 0.4f);
 		}
 	}
 

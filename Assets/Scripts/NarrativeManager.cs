@@ -15,16 +15,16 @@ public class NarrativeManager : MonoBehaviour
 
     void Start()
     {
-        introText = 
-            "<size=60>WELCOME!\n\n" +
-            "<size=40>You are a programmer investigating an <b>AI.</b>\n" +
-            "Your daily duties are given below:";
-        taskText =
-			"<size=50>\u2022<indent=2em> Daily chat with AI</indent>\n" +
-			"\u2022<indent=2em> Daily game with AI</indent>";
+   //     introText = 
+   //         "<size=60>WELCOME!\n\n" +
+   //         "<size=40>You are a programmer investigating an <b>AI.</b>\n" +
+   //         "Your daily duties are given below:";
+   //     taskText =
+			//"<size=50>\u2022<indent=2em> Daily chat with AI</indent>\n" +
+			//"\u2022<indent=2em> Daily game with AI</indent>";
 
-        introTextHolder.text = introText;
-        taskTextHolder.text = taskText;
+   //     introTextHolder.text = introText;
+   //     taskTextHolder.text = taskText;
     }
 
     public void StartBossInteraction()

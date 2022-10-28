@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject introGamePanel;
     public GameObject obstaclePanel;
     public GameObject surveyPanel;
+    public GameObject pausePanel;
     public GameObject taskObject;
     public StoryElement[] aiStoryElements;
     public StoryElement[] bossStoryElements;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     public DialogueManager dialogueManager;
 
     private bool taskBool = false;
+    private bool pauseBool = false;
     public int maxBossChances { get; private set; }
 
 	private void Awake()
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
     {
-        day = 3;
+        day = 0;
 		bossChancesUsed = 0;
         maxBossChances = 3;
 
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (taskBool == false)
             {
@@ -57,7 +59,20 @@ public class GameManager : MonoBehaviour
                 taskBool = false;
 			}
 		}
-    }
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			if (pauseBool == false)
+			{
+				pausePanel.SetActive(true);
+				pauseBool = true;
+			}
+			else
+			{
+				pausePanel.SetActive(false);
+				pauseBool = false;
+			}
+		}
+	}
 
     public void StartConversationDay()
     {

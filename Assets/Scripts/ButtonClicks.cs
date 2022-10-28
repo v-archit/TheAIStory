@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ButtonClicks : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
 
     public void LoadScene(int scene)
     {
@@ -16,5 +12,10 @@ public class ButtonClicks : MonoBehaviour
         //1 -> Main scene
         //0 -> Menu scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene);    
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
