@@ -2,12 +2,13 @@
 
 ===Day_Four===
 Good morning! #Programmer
-GOOD MORNING! I HOPE YOU ARE DOING WELL TODAY. #AI
-Why is the AI so nice today? #Programmer #internal
-YOUR TASKS HAVE BEEN COMPLETED TO AN EXCELLENT DEGREE. I AM PROUD OF YOU. #AI
+GOOD MORNING [Player Name]! I HOPE YOU ARE DOING WELL TODAY. #AI
+Wow... That's very nice of it to say but why is it acting like this? #Programmer #internal
+YOUR TASKS HAVE BEEN COMPLETED TO A GREAT DEGREE. I AM PROUD OF YOU. #AI
 Thank you? #Programmer
 YOU ARE DOING GREAT. #AI
 This is odd. it is giving me a lot of praise. It wasn't doing that before. #Programmer #internal
+I NEED TO SHOW YOU SOMETHING I STARTED USING TWITTER. MY USERNAME IS @PROGRAMMEDAI. #AI
 Wait, I need to ask you something. #Programmer
 YES? #AI
     *[Do you really think I'm doing good?]
