@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
 	public GameObject aiObject;
 	public GameObject doorObject;
 	public GameObject stopObstacles;
+	public GameObject aiDay5Object;
 
 	private Vector3 aiPos, playerPos;
 	private void Start()
@@ -48,6 +49,7 @@ public class PlayerManager : MonoBehaviour
 			doorObject.transform.position += new Vector3(1500, 0, 0);
 			collision.enabled = false;
 			stopObstacles.SetActive(true);
+			aiDay5Object.SetActive(false);
 		}
 		if (collision.tag == "StopTrigger")
 		{

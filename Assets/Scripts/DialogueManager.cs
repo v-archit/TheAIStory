@@ -13,10 +13,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI dialogueText;
     [SerializeField]
-    private TextMeshProUGUI nameText;
-    //[SerializeField]
-    //private GameObject dialoguePanel;
-    [Header("Choices UI")]
+    private TextMeshProUGUI nameTextRight;
+	//[SerializeField]
+	//private GameObject dialoguePanel;
+	[Header("Choices UI")]
 	[SerializeField]
 	private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
@@ -181,15 +181,19 @@ public class DialogueManager : MonoBehaviour
 			case "AI":
 				SetFaceInactive();
 				Color temp2 = faceObject[1].GetComponent<Image>().color;
+                Debug.Log("AI");
 				faceObject[1].GetComponent<Image>().color = new Color(temp2.r, temp2.g, temp2.b, 1.0f);
+				nameTextRight.text = "AI";
 				break;
 			case "Boss":
 				SetFaceInactive();
 				Color temp3 = faceObject[2].GetComponent<Image>().color;
+				Debug.Log("Boss");
+
 				faceObject[2].GetComponent<Image>().color = new Color(temp3.r, temp3.g, temp3.b, 1.0f);
+				nameTextRight.text = "Boss";
 				break;
 		}
-		nameText.text = currentStory.currentTags[0];
 	}
 
     private void SetFaceInactive()
