@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Ink.Runtime;
 using UnityEngine.UI;
+using Mono.Cecil;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class DialogueManager : MonoBehaviour
 	[SerializeField]
 	private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
+
 
     private Story currentStory;
 
@@ -104,6 +106,14 @@ public class DialogueManager : MonoBehaviour
 					SetFaceAndName();
 					if (currentStory.currentTags[1] == "internal")
 						dialogueText.fontStyle = FontStyles.Italic;
+                    if (currentStory.currentTags[1] == "love")
+                        GameManager.GetInstance().EnterLoveText();
+					if (currentStory.currentTags[1] == "password")
+						GameManager.GetInstance().EnterPasswordText();
+                    if (currentStory.currentTags[1] == "delete")
+                        GameManager.GetInstance().SetConversation(31);
+					if (currentStory.currentTags[1] == "fix")
+						GameManager.GetInstance().SetConversation(32);
 					break;
 			}
             //display chocies if any
@@ -216,13 +226,6 @@ public class DialogueManager : MonoBehaviour
 			bg.SetActive(false);
 		}
 	}
-
-    private IEnumerator SelectFirstChoice()
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
-    }
 
     public void MakeChoice(int choiceIndex)
     {

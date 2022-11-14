@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
 	public GameObject doorObject;
 	public GameObject stopObstacles;
 	public GameObject aiDay5Object;
+	public TextMeshProUGUI timer;
 
 	private Vector3 aiPos, playerPos;
 	private void Start()
@@ -26,15 +27,12 @@ public class PlayerManager : MonoBehaviour
 		{
 			if (GameManager.GetInstance().day > 5)
 			{
-				gameStatus.text = "WELL DONE!";
-				Time.timeScale = 0;
+				//player cannot reach door on day 5
 			}
 			else
 			{
 				GameManager.GetInstance().DisablePanels();
-				//obstaclePanel.SetActive(false);
 				ResetObstacleGame();
-				//GameManager.GetInstance().StartDayTransition();
 				GameManager.GetInstance().StartSurvey();
 			}
 		}
@@ -55,7 +53,8 @@ public class PlayerManager : MonoBehaviour
 		{
 			GameObject.FindGameObjectWithTag("StopAnimObj").GetComponent<Animator>().enabled = true;
 			collision.enabled = false;
-			Invoke("EndObstacleGame", 12);
+			StartCoroutine(TimerCountdown());
+			Invoke("EndObstacleGame", 11);
 		}
 	}
 
@@ -78,7 +77,21 @@ public class PlayerManager : MonoBehaviour
 	private void EndObstacleGame()
 	{
 		gameStatus.text = "WELL DONE!";
-		Time.timeScale = 0;
+		GameManager.GetInstance().StartDayTransition();
+
+	}
+
+	IEnumerator TimerCountdown()
+	{
+		timer.gameObject.SetActive(true);
+		int time = 10;
+		while (time >= 0)
+		{
+			timer.text = "" + time;
+			time--;
+			yield return new WaitForSeconds(1);
+		}
+		yield break;
 	}
 
 }

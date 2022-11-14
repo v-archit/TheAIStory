@@ -1,7 +1,7 @@
 -> KillOrSave
 
 ===KillOrSave===
-Hello, this is the first AI programmer. You have entered the password I set up for the AI. I authoritze the right for you to either delete the AI or fix it. Your call. What will you do? #Programmer
+Hello, this is the first AI programmer. You have entered the password I set up for the AI. I authorize the right for you to either delete the AI or fix it. Your call. What will you do? #Programmer
 //new line 
 ->Choices
 ===Choices===

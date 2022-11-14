@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public GameObject obstaclePanel;
     public GameObject surveyPanel;
     public GameObject pausePanel;
+    public GameObject loveTextPanel;
+    public GameObject passwordTextPanel;
+    public GameObject killGamePanel;
+    public GameObject saveGamePanel;
     public GameObject taskObject;
     public StoryElement[] aiStoryElements;
     public StoryElement[] bossStoryElements;
@@ -38,7 +42,7 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
     {
-        day = 0;
+        day = 0;       //default is day 0
 		bossChancesUsed = 0;
         maxBossChances = 3;
 
@@ -94,7 +98,13 @@ public class GameManager : MonoBehaviour
             case 2:
                 postConversation = StartDayTransition;
                 break;
-        }
+			case 31:
+				postConversation = StartKillGame;
+				break;
+			case 32:
+				postConversation = StartSaveGame;
+				break;
+		}
     }
 
     public void StartPostConversation()
@@ -106,8 +116,13 @@ public class GameManager : MonoBehaviour
     {
         DisablePanels();
 		++day;
-        dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "DAY " + day;
-        dayPanel.SetActive(true);
+
+        if(day < 6)
+            dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "DAY " + day;
+        else
+			dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "THE ENDGAME";
+
+		dayPanel.SetActive(true);
         Invoke("EndDayTransition", 3);
     }
 
@@ -138,7 +153,19 @@ public class GameManager : MonoBehaviour
 		introGamePanel.SetActive(true);
     }
 
-    public void UseBossChance()
+	public void StartKillGame()
+	{
+		DisablePanels();
+		killGamePanel.SetActive(true);
+	}
+
+	public void StartSaveGame()
+	{
+		DisablePanels();
+		saveGamePanel.SetActive(true);
+	}
+
+	public void UseBossChance()
     {
         ++bossChancesUsed;
     }
@@ -147,4 +174,36 @@ public class GameManager : MonoBehaviour
     {
         surveyPanel.SetActive(true);
     }
+
+    public void EnterLoveText()
+    {
+        loveTextPanel.SetActive(true);
+    }
+
+	public void EnterPasswordText()
+	{
+        passwordTextPanel.SetActive(true);
+	}
+
+    public void CheckLoveText()
+    {
+        if (loveTextPanel.GetComponentInChildren<TMP_InputField>().text == "Cat")
+        {
+            loveTextPanel.SetActive(false);
+            dialogueManager.NextDialogue();
+        }
+        else
+            loveTextPanel.GetComponentInChildren<TMP_InputField>().text = "WRONG!!";
+	}
+
+	public void CheckPasswordText()
+	{
+		if (passwordTextPanel.GetComponentInChildren<TMP_InputField>().text == "password")
+		{
+			passwordTextPanel.SetActive(false);
+			dialogueManager.NextDialogue();
+		}
+		else
+			passwordTextPanel.GetComponentInChildren<TMP_InputField>().text = "WRONG!!";
+	}
 }
