@@ -187,7 +187,9 @@ public class GameManager : MonoBehaviour
 
     public void CheckLoveText()
     {
-        if (loveTextPanel.GetComponentInChildren<TMP_InputField>().text == "Cat")
+        if (loveTextPanel.GetComponentInChildren<TMP_InputField>().text == "Cat" || 
+            loveTextPanel.GetComponentInChildren<TMP_InputField>().text == "cat" || 
+            loveTextPanel.GetComponentInChildren<TMP_InputField>().text == "CAT")
         {
             loveTextPanel.SetActive(false);
             dialogueManager.NextDialogue();
