@@ -17,6 +17,10 @@ public class AnimationEffects : MonoBehaviour
 	public List<GameObject> killObjects;
 	public List<GameObject> saveObjects;
 
+	public GameObject endKillPanel;
+	public GameObject endSavePanel;
+	public GameObject creditsPanel;
+
 	private void Start()
 	{
 		animator = GetComponent<Animator>();
@@ -113,7 +117,7 @@ public class AnimationEffects : MonoBehaviour
 		}
 		else
 		{
-
+			StartCoroutine(EndKill());
 		}
 	}
 
@@ -127,8 +131,23 @@ public class AnimationEffects : MonoBehaviour
 		}
 		else
 		{
-
+			StartCoroutine(EndSave());
 		}
 	}
 
+	IEnumerator EndKill()
+	{
+		yield return new WaitForSeconds(2);
+		endKillPanel.SetActive(true);
+		yield return new WaitForSeconds(2);
+		creditsPanel.SetActive(true);
+	}
+
+	IEnumerator EndSave()
+	{
+		yield return new WaitForSeconds(2);
+		endSavePanel.SetActive(true);
+		yield return new WaitForSeconds(2);
+		creditsPanel.SetActive(true);
+	}
 }
