@@ -21,6 +21,9 @@ public class AnimationEffects : MonoBehaviour
 	public GameObject endSavePanel;
 	public GameObject creditsPanel;
 
+	public AudioSource audioSource;
+	public AudioSource winAudioSource;
+
 	private void Start()
 	{
 		animator = GetComponent<Animator>();
@@ -137,17 +140,25 @@ public class AnimationEffects : MonoBehaviour
 
 	IEnumerator EndKill()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(3);
 		endKillPanel.SetActive(true);
-		yield return new WaitForSeconds(2);
+		winAudioSource.Play();
+		yield return new WaitForSeconds(3);
 		creditsPanel.SetActive(true);
 	}
 
 	IEnumerator EndSave()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(3);
 		endSavePanel.SetActive(true);
-		yield return new WaitForSeconds(2);
+		winAudioSource.Play();
+		yield return new WaitForSeconds(3);
 		creditsPanel.SetActive(true);
+	}
+
+	public void PlaySound(AudioClip audioClip)
+	{
+		audioSource.clip = audioClip;
+		audioSource.Play();
 	}
 }
