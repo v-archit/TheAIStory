@@ -34,6 +34,9 @@ public class DialogueManager : MonoBehaviour
 	[SerializeField]
 	private GameObject[] bgScreens;
 
+    public List<AudioSource> audioList;
+    private Queue<AudioSource> audioQueue;
+
 	[HideInInspector] public bool isDialoguePlaying { get; private set; }
 	[HideInInspector] public bool isChoicePresent { get; private set; }
 
@@ -58,6 +61,9 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>(); 
             index++;
         }
+
+        audioQueue = new Queue<AudioSource>(audioList);
+
 	}
 
     private void Update()
@@ -191,7 +197,8 @@ public class DialogueManager : MonoBehaviour
 			case "AI":
 				SetFaceInactive();
 				Color temp2 = faceObject[1].GetComponent<Image>().color;
-                Debug.Log("AI");
+                if (GameManager.GetInstance().day == 5)
+                    audioQueue.Dequeue().Play();
 				faceObject[1].GetComponent<Image>().color = new Color(temp2.r, temp2.g, temp2.b, 1.0f);
 				nameTextRight.text = "AI";
 				break;

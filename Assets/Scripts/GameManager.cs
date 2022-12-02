@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     public GameObject taskObject;
     public StoryElement[] aiStoryElements;
     public StoryElement[] bossStoryElements;
+
+    public AudioSource till5Audio;
+    public AudioSource after5Audio;
+
     public int day { get; private set; }
     public int bossChancesUsed { get; private set; }
 
@@ -117,10 +121,17 @@ public class GameManager : MonoBehaviour
         DisablePanels();
 		++day;
 
-        if(day < 6)
+        if (day < 6)
+        {
             dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "DAY " + day;
+            if (day == 5)
+            {
+                till5Audio.Stop();
+                after5Audio.Play();
+            }
+        }
         else
-			dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "THE ENDGAME";
+            dayPanel.GetComponentInChildren<TextMeshProUGUI>().text = "THE ENDGAME";
 
 		dayPanel.SetActive(true);
         Invoke("EndDayTransition", 3);

@@ -13,6 +13,11 @@ public class PlayerManager : MonoBehaviour
 	public GameObject aiDay5Object;
 	public TextMeshProUGUI timer;
 
+	public AudioSource sceneChangeAudioSource;
+	public AudioSource loseAudioSource;
+	public AudioSource taskAudioSource;
+	public AudioSource warningAudioSource;
+
 	private Vector3 aiPos, playerPos;
 	private void Start()
 	{
@@ -31,6 +36,7 @@ public class PlayerManager : MonoBehaviour
 			}
 			else
 			{
+				taskAudioSource.Play();
 				GameManager.GetInstance().DisablePanels();
 				ResetObstacleGame();
 				GameManager.GetInstance().StartSurvey();
@@ -38,12 +44,14 @@ public class PlayerManager : MonoBehaviour
 		}
 		if (collision.tag == "DoorTrigger")
 		{
+			sceneChangeAudioSource.Play();
 			doorObject.transform.position -= new Vector3(1500, 0, 0);
 			collision.enabled = false;
 			GameObject.FindGameObjectWithTag("DoorTrigger2").GetComponent<BoxCollider2D>().enabled = true;
 		}
 		if (collision.tag == "DoorTrigger2")
 		{
+			warningAudioSource.Play();
 			doorObject.transform.position += new Vector3(1500, 0, 0);
 			collision.enabled = false;
 			stopObstacles.SetActive(true);
@@ -51,6 +59,7 @@ public class PlayerManager : MonoBehaviour
 		}
 		if (collision.tag == "StopTrigger")
 		{
+			sceneChangeAudioSource.Play();
 			GameObject.FindGameObjectWithTag("StopAnimObj").GetComponent<Animator>().enabled = true;
 			collision.enabled = false;
 			StartCoroutine(TimerCountdown());
@@ -76,6 +85,7 @@ public class PlayerManager : MonoBehaviour
 
 	private void EndObstacleGame()
 	{
+		loseAudioSource.Play();
 		gameStatus.text = "WELL DONE!";
 		GameManager.GetInstance().StartDayTransition();
 
@@ -91,6 +101,7 @@ public class PlayerManager : MonoBehaviour
 			time--;
 			yield return new WaitForSeconds(1);
 		}
+		
 		yield break;
 	}
 
