@@ -250,7 +250,12 @@ public class DialogueManager : MonoBehaviour
         faceObject[face1].SetActive(true);
         faceObject[face2].SetActive(true);
 
-        bgScreens[face2-1].SetActive(true);
+        if(face2 == 1)
+			nameTextRight.text = "AI";
+        else
+			nameTextRight.text = "Boss";
+
+		bgScreens[face2-1].SetActive(true);
     }
 
     
