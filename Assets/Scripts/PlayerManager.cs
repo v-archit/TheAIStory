@@ -45,14 +45,14 @@ public class PlayerManager : MonoBehaviour
 		if (collision.tag == "DoorTrigger")
 		{
 			sceneChangeAudioSource.Play();
-			doorObject.transform.position -= new Vector3(1500, 0, 0);
+			doorObject.transform.position -= new Vector3(1500 * Mathf.Pow(Display.main.systemWidth / 1920.0f, 0.85f), 0, 0);
 			collision.enabled = false;
 			GameObject.FindGameObjectWithTag("DoorTrigger2").GetComponent<BoxCollider2D>().enabled = true;
 		}
 		if (collision.tag == "DoorTrigger2")
 		{
 			warningAudioSource.Play();
-			doorObject.transform.position += new Vector3(1500, 0, 0);
+			doorObject.transform.position += new Vector3(1500 * Mathf.Pow(Display.main.systemWidth / 1920.0f, 0.85f), 0, 0);
 			collision.enabled = false;
 			stopObstacles.SetActive(true);
 			aiDay5Object.SetActive(false);

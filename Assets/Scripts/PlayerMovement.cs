@@ -11,6 +11,12 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
 
+    private void Start()
+    {
+        runSpeed = 40 * Mathf.Pow(Display.main.systemWidth / 1920.0f, 0.6f);
+
+	}
+
     void Update()
     {
         //Debug.Log("Player Update: " + Time.time);
@@ -24,20 +30,23 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
             //Debug.Log("Button pressed " + transform.position.y);
         }
-    }
+
+	}
+
+
 
     private void FixedUpdate()
     {
 		//Debug.Log("Player Fixed Update: " + Time.time);
 
-
 		controller.Move(horizontalMove, false, jump);
 
-        jump = false;
+		jump = false;
+
 
 	}
 
-	public void OnLanding()
+    public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
         //Debug.Log("Landed " + transform.position.y);

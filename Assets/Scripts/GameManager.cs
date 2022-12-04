@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         day = 0;       //default is day 0
 		bossChancesUsed = 0;
-        maxBossChances = 3;
+        maxBossChances = 4;
 
 	}
 
@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
 
 	public void CheckPasswordText()
 	{
-		if (passwordTextPanel.GetComponentInChildren<TMP_InputField>().text == "password")
+		if (passwordTextPanel.GetComponentInChildren<TMP_InputField>().text == "aisavetheworld")
 		{
 			passwordTextPanel.SetActive(false);
 			dialogueManager.NextDialogue();

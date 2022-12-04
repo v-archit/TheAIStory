@@ -44,9 +44,22 @@ public class CharacterController2DNew : MonoBehaviour
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
 
-		//Debug.Log("Awake");
+		//Debug.Log(Screen.currentResolution);
+		
 
 	}
+
+	private void Start()
+	{
+		Debug.Log(Display.main.systemWidth);
+		m_JumpForce = 50000.0f * Mathf.Pow(Display.main.systemHeight / 1080.0f, 0.6f);
+
+	}
+
+	//private void Update()
+	//{
+		
+	//}
 
 	private void FixedUpdate()
 	{
@@ -146,9 +159,9 @@ public class CharacterController2DNew : MonoBehaviour
 		if (m_Grounded && jump)
 		{
 			// Add a vertical force to the player.
-			
 
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce), ForceMode2D.Force);
+			//Debug.Log(m_Rigidbody2D.velocity);
 
 			m_Grounded = false;
 			//Debug.Log("m_ground " + m_Grounded + " " + transform.position.y);
