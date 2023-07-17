@@ -48,26 +48,6 @@ A key element of our game was a daily chat where the player can speak with the A
 
 (in the Assets folder).
 
-The first daily chat establishes a basic relationship between the player and the AI. The AI appears cold, and the player can choose whether they want to give the AI information about their day.
-
-![](RackMultipart20230717-1-l5xfrg_html_4e47e27c9ac3e18a.jpg)
-
-Starting on the second daily interaction, the main programmer starts to wonder if the AI has changed since the previous day. He considers asking the AI about its different text, but ultimately, the AI refuses to answer. The AI is slightly less cold than day 1, but is still a bit overly harsh, and most of the trait is maintained from the first day.
-
-![](RackMultipart20230717-1-l5xfrg_html_368d781128fc2756.jpg)
-
-On the third day, the player continues to realize that the AI is more welcoming to the player showing up to work for the day. This may be the start of a clear change in behavior after each day changes.
-
-![](RackMultipart20230717-1-l5xfrg_html_8dbb413eaa6571bf.jpg)
-
-The fourth day starts to build up the fact that the AI has a Twitter account. It starts using Twitter to tweet various content about its day. One important aspect about The AI Story is that it has fourth wall mechanics built into its design. As a result, Twitter is expected for the player to search up in real life at this line of dialogue. This will be expanded on in the Twitter Endgame section, but it is worth noting here.
-
-![](RackMultipart20230717-1-l5xfrg_html_d124a44ee0b42e4a.jpg)
-
-The fifth day shows that the AI is not only appearing a lot warmer, but malfunctioning significantly. The AI acts like nothing is wrong, but is showing error and strange noises (displayed by "BZZRT BZZRT", essentially a way to express a malfunctioning way of speech). The player shows great concern for their AI, and tries to complete the daily chat minigame anyway.
-
-![](RackMultipart20230717-1-l5xfrg_html_a20c312d416b6819.jpg)
-
 ## Daily Chat Minigame
 
 The daily chat minigame is a simple 2D mini-game where the player has to reach the end of a small section of a screen. Initially, the player is told what they need to do with a screen that explains the controls and objectives.
@@ -75,38 +55,6 @@ The daily chat minigame is a simple 2D mini-game where the player has to reach t
 ![](RackMultipart20230717-1-l5xfrg_html_ec3d1afcfad6fa07.jpg)
 
 The master schedule lists that we wanted to design functionality for chatting mini-games, and they function through a simple "platformer" mini-game. The first day is extremely simple; the player simply has to reach the door on the other side of the screen with no obstacles in their way.
-
-![](RackMultipart20230717-1-l5xfrg_html_6ae7ede1b00f1f5e.jpg)
-
-The second day is slightly different; as there are some crates in the way that the player has to jump over.
-
-![](RackMultipart20230717-1-l5xfrg_html_8ede1e716055b7d4.jpg)
-
-Day 3 has more crates and they are scattered throughout more of the screen.
-
-![](RackMultipart20230717-1-l5xfrg_html_b69c6d0dc9accaa0.jpg)
-
-Day 4 has a lot more crates and requires a specific pattern for the player to go through. They have to fall through a gap in the crates sand fall next to the AI.
-
-![](RackMultipart20230717-1-l5xfrg_html_c6cf84c13ac0caa4.jpg)
-
-Day 5 is very different, as this is where the AI starts to malfunction. Initially, the mini-game is exactly the same as the first day.
-
-![](RackMultipart20230717-1-l5xfrg_html_6ae7ede1b00f1f5e.jpg)
-
-Once the player reaches the door, it moves automatically to the other side. The idea is that the
-
-AI is responsible for moving the doo
-
-![](RackMultipart20230717-1-l5xfrg_html_1b9deb06e1ad0777.jpg)
-
-When the door on the left is reached, the AI will transform into a spider (another art asset that we established we wanted early). There are a bunch of stop signs that are intended to stop the player from reaching the door.
-
-![](RackMultipart20230717-1-l5xfrg_html_1d55849f73e525d7.jpg)
-
-When the player approaches the gap in the stop signs, it will fall and block the player. A timer will show up on the top of the screen. Reaching the door, therefore, is impossible, and after the timer wraps up the player will move on to the end game.
-
-![](RackMultipart20230717-1-l5xfrg_html_536a3cd8ed591627.jpg)
 
 ## Daily Chat Survey
 
@@ -120,16 +68,6 @@ The narrative between the player and the boss is supposed to express that the bo
 
 The player can interact with the boss up to 3 times. The first interaction is the first time the boss learns about the situation, and he flat-out does not believe the player.
 
-![](RackMultipart20230717-1-l5xfrg_html_7688933131e45e2c.jpg)
-
-The second interaction digs deeper into the lack of help the boss is going to provide, as well as a developing impatience
-
-![](RackMultipart20230717-1-l5xfrg_html_53e181f41de43f4f.jpg)
-
-The third interaction shows that the boss is so frustrated that he is unwilling to speak with the programmer about this issue again.
-
-![](RackMultipart20230717-1-l5xfrg_html_6441d1440606299c.jpg)
-
 # Endgame
 
 The endgame starts after the 5th daily chat mini-game is "lost" (or completed). It sets up the idea that the player wants to figure out what they want to do with the AI. The AI makes it clear that they have something they love, and the answer to that question is mentioned in day 4 during them mentioning what their Twitter account is.
@@ -140,23 +78,9 @@ The endgame starts after the 5th daily chat mini-game is "lost" (or completed). 
 
 Our master schedule talks about "design and implementation" of a twitter account for the AI. If you search ProgrammedAI on Twitter, you will find the Twitter account for the AI (it is not in a game's file). It has a Tweet that lists the answer to what it loves, being Cat. Design of the Twitter account involved creation of the Twitter account and what to tweet on it. Implementation referred to the answer to the question of what it loves, and using that answer to progress through the game.
 
-![](RackMultipart20230717-1-l5xfrg_html_ed86240c82fcd7bc.jpg)
-
-When the player gets to a screen asking what the AI loves, it is not listed in the game itself. Since we want the game to break the fourth wall, we want it to sound like the AI is a real entity, so the answer to what it loves is only accessible on its Twitter account. Twitter expresses that it loves cats, so answering "cat" will allow the player to move on. If they get the answer wrong, they will be told the answer is wrong. A correct answer will cause the AI to act slightly more normal, but there will still be errors in the way it speaks.
-
-![Shape1](RackMultipart20230717-1-l5xfrg_html_bb515cd84395315e.gif)
-
-The AI goes into more detail about what its motives are, and it is them up to the player to stop the AI by either destroying or saving it.
-
 ## Fake Design Document
 
 Another aspect of our game's mechanics of breaking the fourth wall is with a fake design document. This "fake" design document is separate from a standard design document, in that its contents consist of quick notes jotted down from the perspective of the player. When the player reaches this screen, they want to stop the AI's plans and need to find a password to the AI's internal system. Similar to the Twitter account, the answer is not listed in the game itself. The fake design document is in the root of the folder, and contains the password needed to progress through the story.
-
-![Shape2](RackMultipart20230717-1-l5xfrg_html_e3d8814cab3bb93e.gif)
-
-Also in a similar vein to the Twitter account, our fake design document was listed as in need of design and implementation in our master schedule. Design of the fake document was to fill it with notes that seemed like it was a journal from the programmer, and implementation was to use the password listed in the document in the same way as Twitter: To progress forward. The password is "aisavetheworld".
-
-![Shape3](RackMultipart20230717-1-l5xfrg_html_f8611a28500015eb.gif)
 
 # Game Ending
 
@@ -168,25 +92,9 @@ According to our master schedule, the game's ending was used to finish the core 
 
 If the player chooses to delete the AI, the narrative makes it sound like the AI continuing to function would be dangerous to society as a whole. The main character feels like humanity would not understand the advances in technology and the AI would take over many different computers and risk artificial intelligence causing an apocalypse.
 
-![](RackMultipart20230717-1-l5xfrg_html_a8cb1895598755aa.jpg)
-
-There is also a small mini-game that comes with this choice, and it is a click through of watching the AI get destroyed. The player clicks on the lit up graphic (hammer, lightning and grenade) to destroy the AI. Once the AI is destroyed, the game ends. The design of this mini-game was based on what tools would destroy the AI and how it would look when animated. In addition, artwork was based on creating the background, tools, and end screens.
-
-![](RackMultipart20230717-1-l5xfrg_html_dc6d96b8164eede3.jpg)
-
-![Shape4](RackMultipart20230717-1-l5xfrg_html_73e0c9582615c889.gif)
-
 ## Fix AI
 
 If the player chooses to fix the AI, they consider that artificial intelligence has advanced to a significant degree, and can be used to make the daily life of humanity much more simple.
-
-![](RackMultipart20230717-1-l5xfrg_html_f1b52618e73b5596.jpg)
-
-The mini-game is the same in concept as the mini-game for deleting the AI: Simply click the lit up icon to see an animation play. Once all of the icons are clicked, the AI is saved. Similar to the option of deleting the AI, the design was based on narrative for saving the AI and what tools the player should interact with to save the AI.
-
-![](RackMultipart20230717-1-l5xfrg_html_3a5dea99eccb73f6.jpg)
-
-![](RackMultipart20230717-1-l5xfrg_html_45ad1922366f5a5c.jpg)
 
 # Sound Effects
 
